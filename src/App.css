@@ -51,8 +51,7 @@ a {
 }
 
 .navbar {
-  background: rgba(26, 22, 20, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(26, 22, 20, 0.98);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -271,40 +270,59 @@ a {
   color: #fff;
 }
 
-/* Gallery Showcase */
+/* Clean Showcase Cards - No half-black transparent overlays! */
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
-.showcase-item {
-  height: 240px;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
+.showcase-card {
+  background: var(--bg-dark);
   border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.showcase-item img {
+.showcase-card:hover {
+  border-color: var(--primary-amber);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(196, 139, 54, 0.1);
+}
+
+.showcase-img-box {
+  height: 220px;
+  overflow: hidden;
+}
+
+.showcase-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.4s ease;
 }
 
-.showcase-item:hover img {
-  transform: scale(1.08);
+.showcase-card:hover .showcase-img-box img {
+  transform: scale(1.06);
 }
 
-.showcase-title {
-  position: absolute;
-  bottom: 0;
-  inset-x: 0;
-  padding: 15px;
-  background: linear-gradient(transparent, rgba(26,22,20,0.9));
+.showcase-body {
+  padding: 16px 20px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border-color);
+}
+
+.showcase-card-title {
   font-family: var(--font-serif);
+  font-size: 1.2rem;
   color: var(--primary-amber);
+  margin-bottom: 4px;
+}
+
+.showcase-card-sub {
+  font-size: 0.88rem;
+  color: var(--text-muted);
 }
 
 /* Info & Hours */
@@ -338,7 +356,7 @@ a {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   display: flex;
   align-items: center;
   justify-content: center;

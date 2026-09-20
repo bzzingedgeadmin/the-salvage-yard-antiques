@@ -10,7 +10,7 @@ const INVENTORY = [
     era: "Victorian Era (c. 1890)",
     price: "$680",
     desc: "Original brass hardware, 18 dovetailed drawers, restored oil rubbed finish.",
-    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const INVENTORY = [
     era: "Early 1900s Local Salvage",
     price: "$240 - $450",
     desc: "Hand-hewn virgin timber beams salvaged from historic Eaton County farmsteads.",
-    img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const INVENTORY = [
     era: "Mid-Century America (c. 1950)",
     price: "$320",
     desc: "Authentic double-sided heavy porcelain enamel sign with vibrant original graphics.",
-    img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const INVENTORY = [
     era: "c. 1930 Factory Salvage",
     price: "$195",
     desc: "Rewired and safety-tested heavy cast brass explosion-proof industrial ceiling pendant.",
-    img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const INVENTORY = [
     era: "Roaring Twenties (c. 1924)",
     price: "$275",
     desc: "Key-wind mechanical movement with soothing dual-chime mechanism.",
-    img: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 6,
@@ -55,17 +55,17 @@ const INVENTORY = [
     era: "1960s Handblown Glass",
     price: "$145",
     desc: "Set of 6 gold-rimmed matching glasses with stopper, mint vintage condition.",
-    img: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
 const SHOWCASE_GALLERY = [
-  { url: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80", title: "Main Showroom Floor" },
-  { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=600&q=80", title: "Antique Oak Furniture" },
-  { url: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=600&q=80", title: "Vintage Timepieces & Brass" },
-  { url: "https://images.unsplash.com/photo-1505682634934-f3a0a1631b78?auto=format&fit=crop&w=600&q=80", title: "Historic Typewriters & Books" },
-  { url: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=600&q=80", title: "Rustic Home Decor" },
-  { url: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=600&q=80", title: "Architectural Wood Salvage" }
+  { url: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80", title: "Main Showroom Floor", sub: "5,000 Sq Ft Antique Exhibition" },
+  { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80", title: "Antique Oak Furniture", sub: "Restored Hardwood Pieces" },
+  { url: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=800&q=80", title: "Vintage Timepieces & Brass", sub: "Mechanical Clocks & Hardware" },
+  { url: "https://images.unsplash.com/photo-1505682634934-f3a0a1631b78?auto=format&fit=crop&w=800&q=80", title: "Historic Typewriters & Books", sub: "Collectible Literary Rarities" },
+  { url: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=800&q=80", title: "Rustic Home Decor", sub: "Farmhouse & Country Classics" },
+  { url: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80", title: "Architectural Wood Salvage", sub: "Historic Barn Beams & Doors" }
 ];
 
 export default function App() {
@@ -190,7 +190,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Showroom Tour */}
+      {/* Showroom Tour - Clean Cards */}
       <section id="gallery" className="section" style={{ background: 'var(--bg-card)' }}>
         <div className="container">
           <div className="section-header">
@@ -199,9 +199,14 @@ export default function App() {
           </div>
           <div className="showcase-grid">
             {SHOWCASE_GALLERY.map((g, idx) => (
-              <div key={idx} className="showcase-item">
-                <img src={g.url} alt={g.title} />
-                <div className="showcase-title">{g.title}</div>
+              <div key={idx} className="showcase-card">
+                <div className="showcase-img-box">
+                  <img src={g.url} alt={g.title} />
+                </div>
+                <div className="showcase-body">
+                  <div className="showcase-card-title">{g.title}</div>
+                  <div className="showcase-card-sub">{g.sub}</div>
+                </div>
               </div>
             ))}
           </div>
