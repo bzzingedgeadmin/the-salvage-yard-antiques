@@ -270,7 +270,7 @@ a {
   color: #fff;
 }
 
-/* Clean Showcase Cards - No half-black transparent overlays! */
+/* Showcase Cards */
 .showcase-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -282,18 +282,21 @@ a {
   border: 1px solid var(--border-color);
   border-radius: 10px;
   overflow: hidden;
+  cursor: pointer;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .showcase-card:hover {
   border-color: var(--primary-amber);
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(196, 139, 54, 0.1);
+  box-shadow: 0 10px 25px rgba(196, 139, 54, 0.15);
 }
 
 .showcase-img-box {
   height: 220px;
   overflow: hidden;
+  position: relative;
 }
 
 .showcase-img-box img {
@@ -305,6 +308,19 @@ a {
 
 .showcase-card:hover .showcase-img-box img {
   transform: scale(1.06);
+}
+
+.expand-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(26, 22, 20, 0.9);
+  color: var(--primary-amber);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--primary-amber);
 }
 
 .showcase-body {
@@ -323,6 +339,101 @@ a {
 .showcase-card-sub {
   font-size: 0.88rem;
   color: var(--text-muted);
+}
+
+/* Lightbox Carousel Modal */
+.lightbox-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--primary-amber);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.8);
+}
+
+.lightbox-img-box {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-img-box img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(26, 22, 20, 0.9);
+  color: var(--primary-amber);
+  border: 1px solid var(--primary-amber);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.2s;
+}
+
+.lightbox-nav:hover {
+  background: var(--primary-amber);
+  color: #1A1614;
+}
+
+.lightbox-prev { left: 20px; }
+.lightbox-next { right: 20px; }
+
+.lightbox-footer {
+  padding: 20px 30px;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: rgba(26, 22, 20, 0.9);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.lightbox-close:hover {
+  color: var(--primary-amber);
+  border-color: var(--primary-amber);
 }
 
 /* Info & Hours */

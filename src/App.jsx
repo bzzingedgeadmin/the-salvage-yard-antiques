@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80";
+
 const CATEGORIES = ["All Items", "Furniture", "Architectural Salvage", "Vintage Signs", "Collectibles", "Glassware & Lighting"];
 
 const INVENTORY = [
@@ -60,12 +62,18 @@ const INVENTORY = [
 ];
 
 const SHOWCASE_GALLERY = [
-  { url: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80", title: "Main Showroom Floor", sub: "5,000 Sq Ft Antique Exhibition" },
-  { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80", title: "Antique Oak Furniture", sub: "Restored Hardwood Pieces" },
-  { url: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=800&q=80", title: "Vintage Timepieces & Brass", sub: "Mechanical Clocks & Hardware" },
-  { url: "https://images.unsplash.com/photo-1505682634934-f3a0a1631b78?auto=format&fit=crop&w=800&q=80", title: "Historic Typewriters & Books", sub: "Collectible Literary Rarities" },
-  { url: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=800&q=80", title: "Rustic Home Decor", sub: "Farmhouse & Country Classics" },
-  { url: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80", title: "Architectural Wood Salvage", sub: "Historic Barn Beams & Doors" }
+  { url: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80", title: "Main Showroom Floor", sub: "5,000 Sq Ft Antique Exhibition" },
+  { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80", title: "Antique Oak Furniture", sub: "Restored Hardwood Pieces" },
+  { url: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=1200&q=80", title: "Vintage Timepieces & Brass", sub: "Mechanical Clocks & Hardware" },
+  { url: "https://images.unsplash.com/photo-1505682634934-f3a0a1631b78?auto=format&fit=crop&w=1200&q=80", title: "Historic Typewriters & Books", sub: "Collectible Literary Rarities" },
+  { url: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=1200&q=80", title: "Rustic Home Decor", sub: "Farmhouse & Country Classics" },
+  { url: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=1200&q=80", title: "Architectural Wood Salvage", sub: "Historic Barn Beams & Doors" },
+  { url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80", title: "Americana Vintage Signs", sub: "Porcelain & Metal Artifacts" },
+  { url: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80", title: "Industrial Lighting Salvage", sub: "Factory Brass Fixtures" },
+  { url: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80", title: "Collectible Glass & Ceramics", sub: "Mid-Century Kitchenware" },
+  { url: "https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Antique Dealer", sub: "S Bridge St Storefront" },
+  { url: "https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=1200&q=80", title: "Curated Estate Discoveries", sub: "Consignment Treasures" },
+  { url: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=80", title: "Vintage Interior Styling", sub: "Architectural Accents" }
 ];
 
 export default function App() {
@@ -75,6 +83,22 @@ export default function App() {
   const [inquiryItem, setInquiryItem] = useState("General Inventory Inquiry");
   const [toastMessage, setToastMessage] = useState("");
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "", type: "Item Purchase Inquiry" });
+
+  // Lightbox Carousel State
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const nextLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % SHOWCASE_GALLERY.length);
+  };
+
+  const prevLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + SHOWCASE_GALLERY.length) % SHOWCASE_GALLERY.length);
+  };
 
   const filteredItems = INVENTORY.filter(item => {
     const matchesCategory = selectedCategory === "All Items" || item.category === selectedCategory;
@@ -114,7 +138,7 @@ export default function App() {
           </a>
           <div className="nav-links">
             <a href="#inventory">Browse Inventory</a>
-            <a href="#gallery">Showroom Tour</a>
+            <a href="#gallery">Showroom Tour ({SHOWCASE_GALLERY.length})</a>
             <a href="#consign">Appraisals & Consign</a>
             <a href="#hours">Store Hours & Map</a>
             <button className="btn btn-amber" onClick={() => handleOpenInquiry()}>Inquire / Sell Item</button>
@@ -172,7 +196,12 @@ export default function App() {
           <div className="inventory-grid">
             {filteredItems.map(item => (
               <div key={item.id} className="item-card">
-                <img src={item.img} alt={item.title} className="item-img" />
+                <img
+                  src={item.img}
+                  alt={item.title}
+                  className="item-img"
+                  onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                />
                 <div className="item-body">
                   <h3 className="item-title">{item.title}</h3>
                   <span className="item-era">⏳ {item.era}</span>
@@ -190,18 +219,23 @@ export default function App() {
         </div>
       </section>
 
-      {/* Showroom Tour - Clean Cards */}
+      {/* Showroom Tour - Carousel Lightbox Cards */}
       <section id="gallery" className="section" style={{ background: 'var(--bg-card)' }}>
         <div className="container">
           <div className="section-header">
             <h2>INSIDE OUR SHOWROOM</h2>
-            <p>Over 5,000 sq ft of vintage, antique, and rustic architectural exhibits</p>
+            <p>Click any photo to open the interactive full-screen carousel ({SHOWCASE_GALLERY.length} photos)</p>
           </div>
           <div className="showcase-grid">
             {SHOWCASE_GALLERY.map((g, idx) => (
-              <div key={idx} className="showcase-card">
+              <div key={idx} className="showcase-card" onClick={() => openLightbox(idx)}>
                 <div className="showcase-img-box">
-                  <img src={g.url} alt={g.title} />
+                  <img
+                    src={g.url}
+                    alt={g.title}
+                    onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                  />
+                  <span className="expand-badge">🔍 View Carousel</span>
                 </div>
                 <div className="showcase-body">
                   <div className="showcase-card-title">{g.title}</div>
@@ -270,6 +304,33 @@ export default function App() {
           <p>© 2026 The Salvage Yard Antiques. 208 S Bridge St, Grand Ledge, MI 48837 | (517) 622-2001</p>
         </div>
       </footer>
+
+      {/* Lightbox Carousel Modal */}
+      {lightboxIndex !== null && (
+        <div className="lightbox-backdrop" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>✕</button>
+            <div className="lightbox-img-box">
+              <button className="lightbox-nav lightbox-prev" onClick={prevLightboxImage}>‹</button>
+              <img
+                src={SHOWCASE_GALLERY[lightboxIndex].url}
+                alt={SHOWCASE_GALLERY[lightboxIndex].title}
+                onError={(e) => { e.target.src = FALLBACK_IMG; }}
+              />
+              <button className="lightbox-nav lightbox-next" onClick={nextLightboxImage}>›</button>
+            </div>
+            <div className="lightbox-footer">
+              <div>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: 'var(--primary-amber)' }}>{SHOWCASE_GALLERY[lightboxIndex].title}</h3>
+                <p style={{ color: 'var(--text-muted)' }}>{SHOWCASE_GALLERY[lightboxIndex].sub}</p>
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--primary-amber)' }}>
+                Image {lightboxIndex + 1} of {SHOWCASE_GALLERY.length}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Modal */}
       {isModalOpen && (
