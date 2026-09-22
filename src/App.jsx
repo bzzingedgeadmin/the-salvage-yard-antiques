@@ -12,7 +12,7 @@ const INVENTORY = [
     era: "Victorian Era (c. 1890)",
     price: "$680",
     desc: "Original brass hardware, 18 dovetailed drawers, restored oil rubbed finish.",
-    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80"
+    img: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -63,7 +63,7 @@ const INVENTORY = [
 
 const SHOWCASE_GALLERY = [
   { url: "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=1200&q=80", title: "Main Showroom Floor", sub: "5,000 Sq Ft Antique Exhibition" },
-  { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80", title: "Antique Oak Furniture", sub: "Restored Hardwood Pieces" },
+  { url: "https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&fit=crop&w=1200&q=80", title: "Antique Oak Furniture", sub: "Restored Hardwood Pieces" },
   { url: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=1200&q=80", title: "Vintage Timepieces & Brass", sub: "Mechanical Clocks & Hardware" },
   { url: "https://images.unsplash.com/photo-1505682634934-f3a0a1631b78?auto=format&fit=crop&w=1200&q=80", title: "Historic Typewriters & Books", sub: "Collectible Literary Rarities" },
   { url: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=1200&q=80", title: "Rustic Home Decor", sub: "Farmhouse & Country Classics" },
@@ -71,9 +71,9 @@ const SHOWCASE_GALLERY = [
   { url: "https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1200&q=80", title: "Americana Vintage Signs", sub: "Porcelain & Metal Artifacts" },
   { url: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=1200&q=80", title: "Industrial Lighting Salvage", sub: "Factory Brass Fixtures" },
   { url: "https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=1200&q=80", title: "Collectible Glass & Ceramics", sub: "Mid-Century Kitchenware" },
-  { url: "https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Antique Dealer", sub: "S Bridge St Storefront" },
-  { url: "https://images.unsplash.com/photo-1532710093739-9470acff878f?auto=format&fit=crop&w=1200&q=80", title: "Curated Estate Discoveries", sub: "Consignment Treasures" },
-  { url: "https://images.unsplash.com/photo-1585747860715-2ba37e788b70?auto=format&fit=crop&w=1200&q=80", title: "Vintage Interior Styling", sub: "Architectural Accents" }
+  { url: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Antique Dealer", sub: "S Bridge St Storefront" },
+  { url: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=1200&q=80", title: "Curated Estate Discoveries", sub: "Consignment Treasures" },
+  { url: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=1200&q=80", title: "Vintage Interior Styling", sub: "Architectural Accents" }
 ];
 
 export default function App() {
